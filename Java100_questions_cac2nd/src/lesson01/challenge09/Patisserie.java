@@ -140,9 +140,9 @@ public class Patisserie {
 		System.out.println("ピスターシュの味・・・ " + pistachePercentage + "%");
 
 		System.out.println("\nが楽しめます！");
-		//３色値段：総売り上げを総購入数で割り、(int）で出させ、１０で割った後に１０をかけて１の位を切り捨て
+		//３色値段：総売り上げを総購入数で割り、１０で割った後に１０をかけて１の位を切り捨て
 		//252￥/10→25\*10→250\
-		System.out.println("\n値段は\\" + ((totalPrice / (int) totalBuyCount) / 10 * 10) + "です。");
+		System.out.println("\n値段は\\" + ((int) (totalPrice / totalBuyCount) / 10 * 10) + "です。");
 	}
 
 }

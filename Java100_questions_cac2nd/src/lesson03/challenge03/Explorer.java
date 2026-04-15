@@ -42,7 +42,8 @@ public class Explorer {
 		int nauticalMile = 500;
 		int apsedTime = 0;
 
-		//ここにwhile文を記述する。
+		//ここにwhile文を記述する。nauticalMile が0より大きければ繰り返す
+
 		while (nauticalMile > 0) {
 
 			nauticalMile -= 22;

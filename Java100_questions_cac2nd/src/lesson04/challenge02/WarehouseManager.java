@@ -94,22 +94,17 @@ public class WarehouseManager {
 		BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
 
 		System.out.print("データ型を選んでください（1...文字、2...文字列、3...数値）＞");
-
-
-		//ここに入力処理を記述する。
-
+		int type = Integer.parseInt(br.readLine());
 
 		System.out.print("\n要素数を選んでください（1...1個、2...2個、3...3個）＞");
-
-
-		//ここに入力処理を記述する。
-
+		int size = Integer.parseInt(br.readLine());
 
 		boolean errFlag = false;
 
-
-		//ここに入力値の範囲チェック処理を記述する。
-
+		// 範囲チェック
+		if (type < 1 || type > 3 || size < 1 || size > 3) {
+			errFlag = true;
+		}
 
 		if (!errFlag) {
 			System.out.println("\nZ先輩：");
@@ -126,10 +121,24 @@ public class WarehouseManager {
 			String[] strArray = null;
 			int[] intArray = null;
 
-
-			//ここに入力値による分岐および配列要素数の確定、
-			//値の代入処理を記述する。
-
+			// 配列作成＆値代入
+			if (type == 1) {
+				charArray = new char[size];
+				for (int i = 0; i < size; i++) {
+					charArray[i] = (char) ('a' + i);
+				}
+			} else if (type == 2) {
+				strArray = new String[size];
+				String[] sample = { "abc", "def", "ghi" };
+				for (int i = 0; i < size; i++) {
+					strArray[i] = sample[i];
+				}
+			} else if (type == 3) {
+				intArray = new int[size];
+				for (int i = 0; i < size; i++) {
+					intArray[i] = i + 1;
+				}
+			}
 
 			System.out.println("Yさん：");
 			System.out.println("...出来ました。\n");
@@ -139,14 +148,20 @@ public class WarehouseManager {
 
 			System.out.println("Yさん：");
 
-
-			//ここに入力値による分岐および配列要素の表示処理を記述する。
-
+			// 最後の要素を表示
+			if (type == 1) {
+				System.out.print(charArray[size - 1]);
+			} else if (type == 2) {
+				System.out.print(strArray[size - 1]);
+			} else if (type == 3) {
+				System.out.print(intArray[size - 1]);
+			}
 
 			System.out.println("です。\n");
 
 			System.out.println("Z先輩：");
 			System.out.println("はい、ありがとう。ちゃんと出来てますね。\n");
+
 		} else {
 			System.out.println("\nZ先輩：");
 			System.out.println("そのような選択肢はありません。");

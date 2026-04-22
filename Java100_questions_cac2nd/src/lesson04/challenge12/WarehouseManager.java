@@ -101,7 +101,33 @@ public class WarehouseManager {
 
 
 		//ここに適切な値の挿入処理を記述する
+		// ① 0の場所を探す
+		int zeroIndex = 0;
+		for (int i = 0; i < wonderfulArray.length; i++) {
+			if (wonderfulArray[i] == 0) {
+				zeroIndex = i;
+				break;
+			}
+		}
 
+		// ② 足りない数字を探す
+		for (int num = 1; num <= 5; num++) {
+
+			boolean found = false;
+
+			for (int i = 0; i < wonderfulArray.length; i++) {
+				if (wonderfulArray[i] == num) {
+					found = true;
+					break;
+				}
+			}
+
+			// ③ 見つからなかった数字を入れる
+			if (!found) {
+				wonderfulArray[zeroIndex] = num;
+				break;
+			}
+		}
 
 		System.out.println("Yさん：");
 		System.out.println("直してきました。\n");

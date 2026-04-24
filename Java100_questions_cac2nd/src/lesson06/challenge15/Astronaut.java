@@ -36,39 +36,63 @@ import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStreamReader;
 
-
 //ここにSpaceshipクラスを記述する
+class Spaceship {
+	private int damage;
 
+	// ゲッター (getter)
+	public int getDamage() {
+		return damage;
+	}
+
+	// セッター (setter)
+	public void setDamage(int damage) {
+		this.damage = damage;
+	}
+}
 
 //ここにDockクラスを記述する
-
+class Dock {
+	// 引数として「Spaceship型」のオブジェクト（の参照）を受け取る
+	public void repairShip(Spaceship ship) {
+		// 受け取った船のダメージを0にする
+		ship.setDamage(0);
+	}
+}
 
 public class Astronaut {
 
-    public static void main(String[] args) throws IOException {
+	public static void main(String[] args) throws IOException {
 
-        System.out.println("宇宙飛行士：");
-        System.out.println("やっとのことで帰ってきたけど、損傷がひどいな。");
-        System.out.println("修理に出そう。\n");
+		System.out.println("宇宙飛行士：");
+		System.out.println("やっとのことで帰ってきたけど、損傷がひどいな。");
+		System.out.println("修理に出そう。\n");
 
-        BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
-        System.out.print("ダメージを入力してください＞");
-        String damageStr = br.readLine();
-        int damage = Integer.parseInt(damageStr);
+		BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
+		System.out.print("ダメージを入力してください＞");
+		String damageStr = br.readLine();
+		int damage = Integer.parseInt(damageStr);
 
-        System.out.println("\n現在のダメージ：" + damage);
+		System.out.println("\n現在のダメージ：" + damage);
 
+		//ここに適切な処理を記述する
 
-        //ここに適切な処理を記述する
+		// 1. 宇宙船を生成し、入力されたダメージをセットする
+		Spaceship myShip = new Spaceship();
+		myShip.setDamage(damage);
 
+		// 2. ドックを生成し、宇宙船の修理を依頼する
+		Dock spaceDock = new Dock();
+		spaceDock.repairShip(myShip);
 
-        System.out.println("\n宇宙飛行士：");
-        System.out.println("よし！ドックから戻ってきたぞ！\n");
+		System.out.println("\n宇宙飛行士：");
+		System.out.println("よし！ドックから戻ってきたぞ！\n");
 
+		//ここに適切な処理を記述する
+		// ※ 最後の出力が変数 damage
+		// 修理後の宇宙船からダメージ(0)を取り出して上書きする
+		damage = myShip.getDamage();
 
-        //ここに適切な処理を記述する
-
-
-        System.out.println("現在のダメージ：" + damage);
-    }
+		System.out.println("現在のダメージ：" + damage);
+	}
 }

@@ -72,10 +72,11 @@ public class WarehouseManager {
 		MQArrayAll[2] = MQArrayE;
 
 		//ここに配列に値を代入する処理を記述する。(要素はランダム)
+		// 外側のループで「どの配列か」、内側のループで「どの箱か」を指定
 		for (int i = 0; i < MQArrayAll.length; i++) {
 			for (int j = 0; j < MQArrayAll[0].length; j++) {
 				int rand = (int) (Math.random() * 10) % 4;
-				if (rand == 0) {//中身なし0
+				if (rand == 0) {//中身なし0の時は空き箱にする
 					MQArrayAll[i][j] = 0;
 				} else {//中身あり,1~10をランダムに入れる
 					MQArrayAll[i][j] = (int) (Math.random() * 10) % 10 + 1;

@@ -114,7 +114,7 @@ public class Explorer {
 				System.out.println("相手はパーワニでした。");
 			}
 
-			// 負け判定
+			// 勝ち判定
 			if ((hand == 1 && alligator == 2) || // グー vs チョキ（勝ち）
 					(hand == 2 && alligator == 3) || // チョキ vs パー（勝ち）
 					(hand == 3 && alligator == 1)) { // パー vs グー（勝ち）
@@ -126,7 +126,7 @@ public class Explorer {
 				System.out.println((i + 1) + "匹目通り抜け成功！\n");
 				i++;
 
-			} else { // 負け
+			} else { // 負け（それ以外）
 				break;
 			}
 		}

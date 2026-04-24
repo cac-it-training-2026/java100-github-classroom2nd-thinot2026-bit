@@ -50,10 +50,10 @@ public class WarehouseManager {
 			do {
 				loopFlag = false;
 				inputNum = (int) (Math.random() * 5) + 1;
-
+				// すでに入力済みの要素（0番目〜i-1番目）と重複していないかチェック
 				for (int j = 0; j < i; j++) {
 					if (ABKosanArray[j] == inputNum) {
-						loopFlag = true;
+						loopFlag = true;// 重複があったらやり直し
 						break;
 					}
 				}
@@ -79,11 +79,13 @@ public class WarehouseManager {
 		System.out.println("\nです。\n");
 
 		//ここに昇順にソートする処理を記述する
+		// 配列の左側から順番に「正しい値」を確定させていく2重ループ
 
 		for (int i = 0; i < ABKosanArray.length - 1; i++) {
 			for (int j = i + 1; j < ABKosanArray.length; j++) {
+				// 左側の値(i)が右側の値(j)より大きければ、場所を入れ替える
 				if (ABKosanArray[i] > ABKosanArray[j]) {
-					int temp = ABKosanArray[i];
+					int temp = ABKosanArray[i];// 一時退避用の変数を使って交換
 					ABKosanArray[i] = ABKosanArray[j];
 					ABKosanArray[j] = temp;
 				}
@@ -103,6 +105,7 @@ public class WarehouseManager {
 
 		for (int i = 0; i < ABKosanArray.length - 1; i++) {
 			for (int j = i + 1; j < ABKosanArray.length; j++) {
+				// 左側の値(i)が右側の値(j)より小さければ、場所を入れ替える
 				if (ABKosanArray[i] < ABKosanArray[j]) {
 					int temp = ABKosanArray[i];
 					ABKosanArray[i] = ABKosanArray[j];

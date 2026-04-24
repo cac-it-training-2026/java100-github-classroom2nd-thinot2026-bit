@@ -128,9 +128,9 @@ public class WarehouseManager {
 
 		// 配列1チェック
 		for (int i = 0; i < ABKosanArray1.length; i++) {
-			if (ABKosanArray1[i] % 2 == 1) {
+			if (ABKosanArray1[i] % 2 == 1) {// 奇数判定
 				oddArray[oddIndex++] = ABKosanArray1[i];
-			} else {
+			} else {// 偶数判定
 				evenArray[evenIndex++] = ABKosanArray1[i];
 			}
 		}
@@ -144,7 +144,7 @@ public class WarehouseManager {
 			}
 		}
 
-		// 元配列に戻す
+		// 元配列に戻す/ABKosanArray1を奇数群、Array2を偶数群として上書き
 		for (int i = 0; i < 5; i++) {
 			ABKosanArray1[i] = oddArray[i];
 			ABKosanArray2[i] = evenArray[i];

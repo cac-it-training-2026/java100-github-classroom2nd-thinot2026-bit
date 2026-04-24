@@ -92,7 +92,7 @@ public class WarehouseManager {
 		System.out.println("いらっしゃいませ、ご要望をどうぞ。\n");
 
 		BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
-
+		// ユーザーからの入力を数値として取得
 		System.out.print("データ型を選んでください（1...文字、2...文字列、3...数値）＞");
 		int type = Integer.parseInt(br.readLine());
 
@@ -101,7 +101,7 @@ public class WarehouseManager {
 
 		boolean errFlag = false;
 
-		// 範囲チェック
+		// 範囲チェック範囲チェック (入力値が1〜3以外ならエラー)
 		if (type < 1 || type > 3 || size < 1 || size > 3) {
 			errFlag = true;
 		}
@@ -116,16 +116,16 @@ public class WarehouseManager {
 
 			System.out.println("Yさん：");
 			System.out.println("はい、作成させていただきます。\n");
-
+			// 配列の宣言 (まだ実体は作らず、参照変数だけ用意)
 			char[] charArray = null;
 			String[] strArray = null;
 			int[] intArray = null;
 
-			// 配列作成＆値代入
+			// 選択された型に合わせて配列を「new」で生成
 			if (type == 1) {
-				charArray = new char[size];
+				charArray = new char[size];// 指定されたsizeで生成
 				for (int i = 0; i < size; i++) {
-					charArray[i] = (char) ('a' + i);
+					charArray[i] = (char) ('a' + i);// a, b, c...と代入
 				}
 			} else if (type == 2) {
 				strArray = new String[size];
@@ -136,7 +136,7 @@ public class WarehouseManager {
 			} else if (type == 3) {
 				intArray = new int[size];
 				for (int i = 0; i < size; i++) {
-					intArray[i] = i + 1;
+					intArray[i] = i + 1;// 1, 2, 3...と代入
 				}
 			}
 
@@ -149,6 +149,8 @@ public class WarehouseManager {
 			System.out.println("Yさん：");
 
 			// 最後の要素を表示
+			// 配列の添字（インデックス）は 0 から始まるため、
+			// 要素数が 3 の場合、最後の添字は 2 (size - 1) になります。
 			if (type == 1) {
 				System.out.print(charArray[size - 1]);
 			} else if (type == 2) {

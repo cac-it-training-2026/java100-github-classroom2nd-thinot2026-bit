@@ -82,13 +82,13 @@ public class Explorer {
 
 		//ここにfor文のネスト、if文を利用した処理を記述する。
 
-		for (int i = 13; i < 17; i++) {//zikann 
+		for (int i = 13; i < 17; i++) {//(13時から16時まで)
 			for (int j = 0; j < 60; j++) {//分
-				//13:30~
+				//13時台の時は、30分からスタートするように「分」を調整
 				if (i == 13 && j == 0) {
 					j = 30;
 				}
-				if (i == 16 && j == 30) {
+				if (i == 16 && j == 30) {//終了判定】 16:30になった瞬間の処理
 					System.out.println("隊長：");
 					System.out.println("16:30 時間になったよ\n");
 					System.out.println("滝の水流が弱くなりました。\n");
@@ -101,8 +101,9 @@ public class Explorer {
 					System.out.printf("%d:%02d 待ち遠しいな～%n%n", i, j);
 				}
 			}
+			//  16時台の処理（30分で終了）が終わったら「時」のループも抜ける
 			if (i == 16) {
-				break;
+				break;// 「時」のループ（外側）を抜ける
 			}
 		}
 	}

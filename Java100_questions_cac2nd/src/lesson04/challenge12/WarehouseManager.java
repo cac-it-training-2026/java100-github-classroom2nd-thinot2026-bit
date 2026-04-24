@@ -99,7 +99,6 @@ public class WarehouseManager {
 
 		System.out.println("\n\nでした。直してきます...\n");
 
-
 		//ここに適切な値の挿入処理を記述する
 		// ① 0の場所を探す
 		int zeroIndex = 0;
@@ -113,11 +112,11 @@ public class WarehouseManager {
 		// ② 足りない数字を探す
 		for (int num = 1; num <= 5; num++) {
 
-			boolean found = false;
+			boolean found = false;// 数字が見つかったかどうかのフラグ
 
 			for (int i = 0; i < wonderfulArray.length; i++) {
 				if (wonderfulArray[i] == num) {
-					found = true;
+					found = true;// 数字が存在
 					break;
 				}
 			}
@@ -125,7 +124,7 @@ public class WarehouseManager {
 			// ③ 見つからなかった数字を入れる
 			if (!found) {
 				wonderfulArray[zeroIndex] = num;
-				break;
+				break;// 欠けている数字は必ず1つなので、代入したら終了
 			}
 		}
 

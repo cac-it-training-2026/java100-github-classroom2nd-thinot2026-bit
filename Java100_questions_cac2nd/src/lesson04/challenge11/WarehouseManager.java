@@ -134,10 +134,11 @@ public class WarehouseManager {
 		//15個の箱（C+D+E）を入れる配列
 		int[] isArray = new int[15];
 
+		// 初期値として「荷物なし」を意味する -1 をセット（0は空箱として使うため）
 		for (int i = 0; i < isArray.length; i++) {
 			isArray[i] = -1;
 		}
-
+		// isArray のどこに入れるかを管理するカウンター
 		int k = 0;
 		//コンテナごとに処理（C → D → E）
 		for (int i = 0; i < MQArrayAll.length; i++) {
@@ -158,7 +159,7 @@ public class WarehouseManager {
 
 		for (int i = 0; i < MQArrayAll.length; i++) {
 			for (int j = 0; j < MQArrayAll[0].length; j++) {
-				
+
 				//k < length:配列の範囲内か確認
 				if (k < isArray.length && isArray[k] != -1) {//isArray[k] != -1:まだ値が入っているか確認
 					//値を元の配列に戻す

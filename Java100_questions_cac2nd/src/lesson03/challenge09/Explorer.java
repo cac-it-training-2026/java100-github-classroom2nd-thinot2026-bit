@@ -58,12 +58,14 @@ public class Explorer {
 		System.out.println("間欠泉が10個あるよ気をつけて！\n");
 
 		int geyser = 0;
-		int damage = 0;
+		int damage = 0;// 浴びた熱湯の回数をカウント
 		for (int i = 0; i < 10; i++) {
-
+			// 1/2の確率で0か1を生成
 			geyser = (int) (Math.random() * 10 % 2);
 
 			//ここにif文、continue文を利用した処理を記述
+			// もしセーフ（geyserが0）だった場合、この後の「ダメージ処理」を飛ばして
+			// 次のループ（i++）へ直接ジャンプします。
 
 			if (geyser == 0) {
 				System.out.println("隊長：");
@@ -71,16 +73,20 @@ public class Explorer {
 				System.out.println("ラッキー！\n");
 				continue;
 			}
+			// --- 熱湯（geyserが1）だった場合の処理 ---
+			// continueで飛ばされなかった時だけ、以下のコードが実行されます。
 
 			damage++;
 			System.out.println("隊長：");
 			System.out.println((i + 1) + "個目。熱湯");
 			System.out.println("うわ熱っ！（ダメージ" + damage + "）\n");
 
+			// ダメージが6になった時点で、ループ全体を強制終了
 			if (damage == 6) {
 				break;
 			}
 		}
+		// ループを抜けた時にダメージが6未満であれば
 		if (damage != 6) {
 			System.out.println("洞窟の出口にたどり着きました。");
 		} else {

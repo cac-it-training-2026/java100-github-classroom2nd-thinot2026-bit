@@ -86,11 +86,16 @@ public class WarehouseManager {
 		//for文のネストを利用してMQArrayAの要素0の位置にMQArrayBの値を入れる処理を記述する。
 
 		for (int i = 0; i < MQArrayA.length; i++) {
-			if (MQArrayA[i] == 0) {
+			if (MQArrayA[i] == 0) {// もし配列Aの箱が「空（0）」だったら
+				//  内側のループ：配列Bの中から「中身（0以外）」を探す
 				for (int j = 0; j < MQArrayB.length; j++) {
+					// 配列Bに荷物が見つかったら移動開始
 					if (MQArrayB[j] != 0) {
-						MQArrayA[i] = MQArrayB[j];
-						MQArrayB[j] = 0;
+						MQArrayA[i] = MQArrayB[j];// AにBの中身をコピー
+						MQArrayB[j] = 0;// Bの箱を空にする
+
+						//  移動が1つ完了したので、内側のループを終了して
+						// 次の「配列Aの空き」を探しにいく
 						break;
 					}
 				}

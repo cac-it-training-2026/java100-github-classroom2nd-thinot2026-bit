@@ -72,6 +72,7 @@ public class WarehouseManager {
 		System.out.println("まず、MISAKI○の今の状態を確かめようかな。\n");
 
 		//三つのあいさつパターンの出力処理を記述する
+		// (i + 1) とすることで、インデックス0を「パターン1」として表示させている
 		for (int i = 0; i < greetingArray.length; i++) {
 			System.out.print("あいさつパターン" + (i + 1) + "...「");
 			System.out.println(greetingArray[i] + "」\n");
@@ -86,7 +87,7 @@ public class WarehouseManager {
 		System.out.print("どのパターンを変更しますか＞");
 
 		String choiceNumStr = br.readLine();
-		int choiceNum = Integer.parseInt(choiceNumStr) - 1;
+		int choiceNum = Integer.parseInt(choiceNumStr) - 1;// ユーザーが「2」と入力した時、配列の2番目（インデックス1）を指すように調整
 
 		System.out.print("\nあいさつを吹き込んでください＞");
 		String message = br.readLine();

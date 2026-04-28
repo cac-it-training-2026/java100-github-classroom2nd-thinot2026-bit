@@ -83,9 +83,53 @@ public class Explorer {
 
 		BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
 
-
 		//ここにwhile文、if文を利用した処理を記述
 
+		while (i < 3) {
+
+			System.out.println("隊長：");
+			System.out.println("どの手を出して通り抜けますか");
+			System.out.print("（グー… 1 : チョキ… 2 : パー… 3）＞");
+
+			hand = Integer.parseInt(br.readLine());
+
+			// 範囲チェック
+			if (hand < 1 || hand > 3) {
+				System.out.println("隊長：");
+				System.out.println("そんな手はありませんよ。もう一度入れてください。\n");
+				continue;
+			}
+
+			// ワニの手（1～3のランダム）
+			alligator = (int) (Math.random() * 3) + 1;
+
+			System.out.println("\n隊長：");
+
+			// ワニの手を表示
+			if (alligator == 1) {
+				System.out.println("相手はグーワニでした。");
+			} else if (alligator == 2) {
+				System.out.println("相手はチョキワニでした。");
+			} else {
+				System.out.println("相手はパーワニでした。");
+			}
+
+			// 勝ち判定
+			if ((hand == 1 && alligator == 2) || // グー vs チョキ（勝ち）
+					(hand == 2 && alligator == 3) || // チョキ vs パー（勝ち）
+					(hand == 3 && alligator == 1)) { // パー vs グー（勝ち）
+
+				System.out.println((i + 1) + "匹目通り抜け成功！\n");
+				i++;
+
+			} else if (hand == alligator) { // あいこ
+				System.out.println((i + 1) + "匹目通り抜け成功！\n");
+				i++;
+
+			} else { // 負け（それ以外）
+				break;
+			}
+		}
 
 		if (i == 3) {
 			System.out.println("隊長：");

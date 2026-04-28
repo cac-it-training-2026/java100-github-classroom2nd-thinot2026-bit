@@ -39,35 +39,77 @@ import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStreamReader;
 
-
 //ここにGammalianクラスを記述する
 
+class Gammalian {
+
+	private String item; // 渡されたアイテム名
+	private boolean isGood; // 気に入った（数字入りである）かどうかのフラグ
+
+	public String getItem() {
+		return item;
+	}
+
+	// アイテムを受け取り、お気に入りかどうかを判定して保持するメソッド
+	public void setItem(String item) {
+		boolean isHit = false; // 数字が見つかったかどうかを記録する一時的な変数
+
+		// 0 から 9 までの数字が含まれているかを順番にチェックする
+		for (int i = 0; i < 10; i++) {
+			// Integer.toString(i) で数値の 0〜9 を文字列の "0"〜"9" に変換
+			// indexOf は指定した文字が見つからない場合に -1 を返すため、
+			// 「!= -1」は「見つかった（含まれている）」という条件になる
+			if (item.indexOf(Integer.toString(i)) != -1) {
+				isHit = true; // 数字が見つかったのでフラグを true に
+				break; // 1つでも数字が見つかれば十分なので、ここでループを終了
+			}
+		}
+
+		// 発見フラグ(isHit)の状態をそのままお気に入りフラグ(isGood)に反映
+		if (isHit) {
+			isGood = true;
+		} else {
+			isGood = false;
+		}
+		this.item = item;
+	}
+
+	public boolean isGood() {
+		return isGood;
+	}
+
+	public void setGood(boolean isGood) {
+		this.isGood = isGood;
+	}
+}
 
 public class Astronaut {
 
-    public static void main(String[] args) throws IOException {
+	public static void main(String[] args) throws IOException {
 
-        System.out.print("γ星人にアイテムを渡してください＞");
-        BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
-        String present = br.readLine();
+		System.out.print("γ星人にアイテムを渡してください＞");
+		BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
+		String present = br.readLine(); // ユーザーからの入力を受け取る
 
+		// 1. γ星人オブジェクトを生成
+		Gammalian gammalian = new Gammalian();
 
-        //ここに適切な処理を記述する
+		// 2. アイテムを渡す（ここで数字チェックが実行される）
+		gammalian.setItem(present);
 
+		// 3. γ星人が気に入ってくれたかどうかの結果を受け取る
+		boolean isGood = false;
+		isGood = gammalian.isGood();
 
-        boolean isGood = false;
+		System.out.println("\nγ星人：");
 
-
-        //ここに適切な処理を記述する
-
-
-        System.out.println("\nγ星人：");
-        if(isGood){
-             System.out.println("こんな良いものをもらっていいガンマか！");
-             System.out.println("ゆっくりしていくガンマ。");
-        } else{
-             System.out.println("...ありがとガンマ。");
-             System.out.println("ぶぶ漬けでもいかがガンマか？");
-        }
-    }
+		// フラグの値によって、γ星人のセリフを分岐
+		if (isGood) {
+			System.out.println("こんな良いものをもらっていいガンマか！");
+			System.out.println("ゆっくりしていくガンマ。");
+		} else {
+			System.out.println("...ありがとガンマ。");
+			System.out.println("ぶぶ漬けでもいかがガンマか？");
+		}
+	}
 }
